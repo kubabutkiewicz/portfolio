@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Jakub Butkiewicz - Front-end Developer`,
+    description: `Hello and welcome in my portfolio site. If you have any questions or you want to cooperate with me contact with me jakub.butkiewicz94@gmail.com`,
+    author: `Jakub Butkiewicz`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,6 +12,13 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'http://localhost:1337',
+        contentTypes: ['project', 'technology']
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
