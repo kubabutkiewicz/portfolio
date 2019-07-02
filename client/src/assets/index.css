@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Jost';
+  src: url('./fonts/Jost-500-Medium.ttf');
+}
+@font-face {
+  font-family: 'Jost-light';
+  src: url('./fonts/Jost-300-Light.ttf');
+}
+@font-face {
+  font-family: 'Jost-Bold';
+  src: url('./fonts/Jost-700-Bold.ttf');
+}
