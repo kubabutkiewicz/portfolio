@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import SocialBar from '../molecules/SocialBar';
-import Logo from '../atoms/Logo';
-import Hamburger from '../atoms/Hamburger'
+import SocialBar from 'src/components/molecules/SocialBar';
+import Logo from 'src/components/atoms/Logo';
+import Hamburger from 'src/components/atoms/Hamburger';
+import Menu from 'src/components/molecules/Menu';
 
 const Nav = styled.nav`
-    display: grid;
-    grid-template-columns: 1fr 0.4fr 0.1fr;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  position: fixed;
+  top: 1.5rem;
+  width: 100vw;
 `;
+
 const NavBar = () => {
-    return ( 
-        <Nav>
-            <Logo />
-            <SocialBar />
-            <Hamburger />
-        </Nav>
-     );
-}
- 
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const handleOpenMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+  return (
+    <Nav>
+      <Menu isMenuOpen={isMenuOpen} />
+      <Logo />
+      <SocialBar />
+      <Hamburger isMenuOpen={isMenuOpen} handleOpenMenu={handleOpenMenu} />
+    </Nav>
+  );
+};
+
 export default NavBar;

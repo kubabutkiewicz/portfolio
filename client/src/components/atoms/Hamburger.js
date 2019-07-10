@@ -1,48 +1,73 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Button = styled.button`
-    width: 70px;
-    height: 70px;
-    border: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    position: relative;
-    padding: 0.5rem;
-    cursor: pointer;
-    margin-left: 11.2rem
+  width: 5rem;
+  height: 5rem;
+  border: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: transparent;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  justify-self: end;
+  transform: rotate(${({ isMenuOpen }) => (isMenuOpen ? '45deg' : '0')});
+  transition: transform 0.2s ease;
+  margin-right: 1.5rem;
+  :focus {
+    outline: none;
+  }
 `;
 const Line = styled.span`
-    position: relative;
-    width: 50%;
+  position: relative;
+  width: 50%;
+  transform: rotate(${({ isMenuOpen }) => (isMenuOpen ? '0' : '0')});
+  transition: transform 0.2s ease;
+  height: 2px;
+  background-color: ${({ theme }) => theme.colors.darkGrey};
+  
+
+  ::after,
+  ::before {
+    content: '';
+    display: block;
     height: 2px;
-    background-color: ${({theme}) => theme.colors.darkGrey};
+    background-color: ${({ theme }) => theme.colors.darkGrey};
+    position: absolute;
+    right: 0;
+    transition: transform 0.2s ease;
+    transform-origin: right;
+  }
+  ::after {
+    bottom: 1rem;
+    width: 125%;
+    transform: scaleX(${({ isMenuOpen }) => (isMenuOpen ? '0' : '1')});
+  }
+  ::before {
+    top: 1rem;
+    width: 75%;
+    transform: rotate(${({ isMenuOpen }) => (isMenuOpen ? '90deg' : '0')}) 
     
-    ::after, ::before {
-        content: '';
-        display: block;
-        height: 2px;
-        width: 125%;
-        background-color: ${({theme}) => theme.colors.darkGrey};
-        position: absolute;
-        right: 0;
-    }
-    ::after {
-        bottom: 1rem;
-    }
-    ::before {
-        top: 1rem;
-        
-    }
+    scaleX(${({ isMenuOpen }) => (isMenuOpen ? '1.35' : '1')})
+    translate(${({ isMenuOpen }) => (isMenuOpen ? '5%, 600%' : '0,0')})
+    ;
+    transform-origin: right;
+  }
 `;
-const Hamburger = () => {
-    return ( 
-        <Button type="button">
-            <Line />
-        </Button>
-     );
-}
- 
+const Hamburger = ({ isMenuOpen, handleOpenMenu }) => {
+  return (
+    <Button type="button" isMenuOpen={isMenuOpen} onClick={handleOpenMenu}>
+      <Line isMenuOpen={isMenuOpen} />
+    </Button>
+  );
+};
+
 export default Hamburger;
+
+Hamburger.propTypes = {
+  isMenuOpen: PropTypes.bool.isRequired,
+  handleOpenMenu: PropTypes.func.isRequired,
+};

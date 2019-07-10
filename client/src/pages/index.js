@@ -2,11 +2,12 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import SEO from '../components/seo';
-import NavBar from '../components/organism/NavBar';
-import '../assets/index.css';
+import theme from 'src/assets/theme';
+import SEO from 'src/components/seo';
+import NavBar from 'src/components/organism/NavBar';
+import 'src/assets/index.css';
 
-import theme from '../assets/theme';
+
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -17,8 +18,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 1.6rem;
-   
+    font-size: 1rem;
   }
 `;
 const IndexPage = ({ data }) => (
