@@ -6,6 +6,7 @@ import theme from 'src/assets/theme';
 import SEO from 'src/components/seo';
 import NavBar from 'src/components/organism/NavBar';
 import 'src/assets/index.css';
+import Header from 'src/components/organism/Header';
 
 
 
@@ -27,6 +28,7 @@ const IndexPage = ({ data }) => (
       <GlobalStyle />
       <SEO title="Home" />
       <NavBar />
+      <Header />
       <ul>
         {data.allStrapiProject.edges.map(project => (
           <li key={project.node.id}>

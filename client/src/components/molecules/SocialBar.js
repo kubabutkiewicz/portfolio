@@ -17,6 +17,13 @@ const List = styled.ul`
   justify-content: space-evenly;
   align-items: center;
   height: 20rem;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    height: 5rem;
+    top: 4.5rem;
+    left: 50%;
+    width: 33%;
+  }
   `;
 const ListItem = styled.li`
     margin: 0;
