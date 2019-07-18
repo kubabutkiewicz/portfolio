@@ -6,15 +6,20 @@ import Hamburger from 'src/components/atoms/Hamburger';
 import Menu from 'src/components/molecules/Menu';
 
 const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  
   margin: 1.5rem 0;
   position: fixed;
   top: 1.5rem;
+  z-index: 9999;
   width: 100vw;
 `;
-
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1500px;
+`;
 const NavBar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const handleOpenMenu = () => {
@@ -22,10 +27,12 @@ const NavBar = () => {
   };
   return (
     <Nav>
+      <Container>
       <Menu isMenuOpen={isMenuOpen} />
       <Logo />
       <SocialBar />
       <Hamburger isMenuOpen={isMenuOpen} handleOpenMenu={handleOpenMenu} />
+      </Container>
     </Nav>
   );
 };
